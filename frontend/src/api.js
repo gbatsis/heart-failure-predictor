@@ -8,3 +8,13 @@ export async function predictRisk(data) {
     });
     return response.json();
 }
+
+export async function fetchPredictions() {
+    const response = await fetch('http://localhost:5050/predictions');
+    const data = await response.json();
+    if (data.error) {
+        throw new Error(data.error);
+    }
+    return data.predictions;
+}
+

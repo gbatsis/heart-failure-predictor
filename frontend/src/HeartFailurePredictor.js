@@ -16,6 +16,7 @@ function HeartFailurePredictor() {
         stSlope: ''
     });
     const [success, setSuccess] = useState(false);
+    const [predictionResult, setPredictionResult] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -31,6 +32,7 @@ function HeartFailurePredictor() {
         const response = await predictRisk(formData);
         if (response) {
             setSuccess(true);
+            setPredictionResult(response.result);
             console.log("Success:", response);
         }
     };
@@ -157,6 +159,11 @@ function HeartFailurePredictor() {
                         </div>
                     </form>
                     {success && <p>Successful data reception.</p>}  {/* Success message */}
+                    {predictionResult && (
+                        <div className="prediction-result">
+                            <p>Prediction Probability: {predictionResult * 100}%</p>
+                        </div>
+                    )} {/* Prediction result */}
                 </div>
             </div>
         </main>
