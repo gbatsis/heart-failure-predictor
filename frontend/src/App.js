@@ -1,11 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
 import HeartFailurePredictor from './HeartFailurePredictor';
+import Archive from './Archive';
 
 function App() {
   return (
-    <div className="App">
-      <HeartFailurePredictor />
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/archive" element={<Archive />} />
+          <Route path="/" element={<HeartFailurePredictor />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
