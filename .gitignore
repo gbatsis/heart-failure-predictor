@@ -1,3 +1,4 @@
-data
-./models
-backend/.venv
+data/
+/models/
+/backend/.venv
+__pycache__
