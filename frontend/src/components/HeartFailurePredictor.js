@@ -38,9 +38,8 @@ function HeartFailurePredictor() {
     };
 
     return (
-        <main id="prediction-content-wrapper">
+        <div id="prediction-content-wrapper">
             <div className="intro-msg">
-                <h2>Heart failure prediction</h2>
                 <p>Fill in the form below to predict the likelihood of heart failure in a patient using the power of Artificial Intelligence.</p>
             </div>
             <div className="ml-app-wrapper">
@@ -153,20 +152,21 @@ function HeartFailurePredictor() {
                                 <input type="radio" id="slopeDown" name="stSlope" value="Down" onChange={handleChange} checked={formData.stSlope === 'Down'} />
                             </div>
                         </div>
-
-                        <div className="submit-btn-container">
+                        <div className='predictionArea'>
                             <button type="submit" id="predictButton">Predict</button>
                         </div>
                     </form>
-                    {success && <p>Successful data reception.</p>}  {/* Success message */}
+                    {/*
+                    {success && <p>Successful data reception.</p>}
                     {predictionResult && (
                         <div className="prediction-result">
                             <p>Prediction Probability: {predictionResult * 100}%</p>
                         </div>
-                    )} {/* Prediction result */}
+                    )} 
+                    */}
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
 

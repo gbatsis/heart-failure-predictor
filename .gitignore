@@ -2,3 +2,4 @@ data/
 /models/
 /backend/.venv
 __pycache__
+friend.css
