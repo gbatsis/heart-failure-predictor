@@ -11,22 +11,22 @@ function App() {
     const location = useLocation();
 
     return (
-        <div>
-          <CanvasBackground />
-          <div className="app">
-            <Header />
-            <div className="app-container">
-                <TransitionGroup>
-                    <CSSTransition key={location.key} classNames="slide" timeout={300}>
-                        <Routes location={location}>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/archive" element={<Archive />} />
-                            <Route path="*" element={<Navigate to="/" replace />} />
-                        </Routes>
-                    </CSSTransition>
-                </TransitionGroup>
+        <div className="app">
+            <CanvasBackground />
+            <div className="app-wrapper">
+                <Header />
+                <div className="app-container">
+                    <TransitionGroup>
+                        <CSSTransition key={location.key} classNames="slide" timeout={300}>
+                            <Routes location={location}>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/archive" element={<Archive />} />
+                                <Route path="*" element={<Navigate to="/" replace />} />
+                            </Routes>
+                        </CSSTransition>
+                    </TransitionGroup>
+                </div>
             </div>
-        </div>
         </div>
     );
 }
