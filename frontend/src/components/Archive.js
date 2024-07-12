@@ -33,29 +33,32 @@ function Archive() {
     };
 
     return (
-        <div className="archive-container">
-            <div className="archive-header">
-                <h1>Archive</h1>
+        
+            <div className="app-content">
+                <div class="welcome-msg">
+                    <h1>Explore predictions archive</h1>
+                </div>
+                <div className="archive-content-container">
+                    {error && <p>{error}</p>}
+                    <table className="archive-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Probability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {predictions.map((prediction, index) => (
+                                <tr key={index} onClick={() => handleRowClick(prediction)}>
+                                    <td data-label="Time">{prediction.timestamp}</td>
+                                    <td data-label="Probability">{(prediction.result * 100).toFixed(2)}%</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <Modal show={showModal} onClose={handleCloseModal} prediction={selectedPrediction} />
+                </div>
             </div>
-            {error && <p>{error}</p>}
-            <table className="archive-table">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Probability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {predictions.map((prediction, index) => (
-                        <tr key={index} onClick={() => handleRowClick(prediction)}>
-                            <td data-label="Time">{prediction.timestamp}</td>
-                            <td data-label="Probability">{(prediction.result * 100).toFixed(2)}%</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <Modal show={showModal} onClose={handleCloseModal} prediction={selectedPrediction} />
-        </div>
     );
 }
 
