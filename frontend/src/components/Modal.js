@@ -15,7 +15,7 @@ const Modal = ({ show, onClose, prediction }) => {
     }, [show]);
 
     const featureOrder = [
-        'id', 'age', 'sex', 'chestPainType', 'restingBP', 'cholesterol',
+        'id', 'age', 'sex', 'chestPainType', 'cholesterol',
         'fastingBS', 'restingECG', 'maxHR', 'exerciseAngina', 'oldpeak',
         'stSlope', 'result', 'timestamp'
     ];
@@ -28,13 +28,16 @@ const Modal = ({ show, onClose, prediction }) => {
                 </button>
                 <h2>Prediction Details</h2>
                 {prediction && (
-                    <ul>
-                        {featureOrder.map((key, index) => (
-                            <li key={index}>
-                                <strong>{transformFeatureNames(key)}</strong>: {transformFeatureValues(key, prediction[key])}
-                            </li>
-                        ))}
-                    </ul>
+                    <table className="prediction-table">
+                        <tbody>
+                            {featureOrder.map((key, index) => (
+                                <tr key={index}>
+                                    <td><strong>{transformFeatureNames(key)}</strong></td>
+                                    <td>{transformFeatureValues(key, prediction[key])}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 )}
             </div>
         </div>

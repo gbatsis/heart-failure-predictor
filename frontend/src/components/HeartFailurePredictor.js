@@ -6,7 +6,6 @@ function HeartFailurePredictor() {
         age: 50,
         sex: 'M',
         chestPainType: 'ATA',
-        restingBP: 120,
         cholesterol: 200,
         fastingBS: '0',
         restingECG: 'Normal',
@@ -17,7 +16,7 @@ function HeartFailurePredictor() {
     });
     const [success, setSuccess] = useState(false);
     const [predictionResult, setPredictionResult] = useState(null);
-    const [message, setMessage] = useState("Prediction Probability: -");
+    const [message, setMessage] = useState("Heart Failure Probability: -");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,7 +46,6 @@ function HeartFailurePredictor() {
             age: 50,
             sex: 'M',
             chestPainType: 'ATA',
-            restingBP: 120,
             cholesterol: 200,
             fastingBS: '0',
             restingECG: 'Normal',
@@ -58,7 +56,7 @@ function HeartFailurePredictor() {
         });
         setSuccess(false);
         setPredictionResult(null);
-        setMessage("Prediction Probability: -");
+        setMessage("Heart Failure Probability: -");
     };
 
     return (
@@ -97,14 +95,6 @@ function HeartFailurePredictor() {
                             <input type="radio" id="cpNAP" name="chestPainType" value="NAP" onChange={handleChange} checked={formData.chestPainType === 'NAP'} />
                             <label htmlFor="cpASY">Asymptomatic</label>
                             <input type="radio" id="cpASY" name="chestPainType" value="ASY" onChange={handleChange} checked={formData.chestPainType === 'ASY'} />
-                        </div>
-                    </div>
-
-                    <div className="form-section" id="restingBPSection">
-                        <p id="restingBPDesc">Please enter the resting blood pressure (mm Hg):</p>
-                        <div className="input-group" id="restingBPGroup">
-                            <input type="range" id="restingBP" name="restingBP" min="50" max="200" value={formData.restingBP} onChange={handleChange} />
-                            <label htmlFor="restingBP">Resting Blood Pressure: {formData.restingBP}</label>
                         </div>
                     </div>
 
@@ -181,7 +171,7 @@ function HeartFailurePredictor() {
                             {message && <p>{message}</p>}
                             {predictionResult && (
                                 <div>
-                                    <p>Prediction Probability: {(predictionResult * 100).toFixed(1)}%</p>
+                                    <p>Heart Failure Probability: {(predictionResult * 100).toFixed(1)}%</p>
                                 </div>
                             )}
                         </div>

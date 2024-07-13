@@ -4,7 +4,6 @@ export const transformFeatureNames = (feature) => {
         age: "Age",
         sex: "Sex",
         chestPainType: "Chest Pain Type",
-        restingBP: "Resting Blood Pressure",
         cholesterol: "Cholesterol",
         fastingBS: "Fasting Blood Sugar",
         restingECG: "Resting ECG",
@@ -37,6 +36,10 @@ export const transformFeatureValues = (feature, value) => {
         exerciseAngina: { Y: "Yes", N: "No" },
         stSlope: { Up: "Upsloping", Flat: "Flat", Down: "Downsloping" }
     };
+    
+    if (feature === 'result') {
+        return (value * 100).toFixed(1) + '%';
+    }
 
     if (valueMap[feature]) {
         return valueMap[feature][value] || value;
