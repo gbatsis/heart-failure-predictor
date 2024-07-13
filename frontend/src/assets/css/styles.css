@@ -7,7 +7,7 @@
     --menu-text-color: #e4e4e4;
     --menu-underlined-color: #b3c9e1;
     --pulse-color: #b3c9e1;
-    --heart-color: rgba(211, 187, 187, 0.769);
+    --heart-color: #d3bbbbc4;
     --black-text-1: #0b121b;
     --border-color: #7177901b;
     --fts-color: #802e2e;
@@ -40,23 +40,6 @@ body,html {
     overflow: hidden;
     display: flex;
     justify-content: center;
-}
-
-#bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1000;
-}
-
-#bg canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 .app-wrapper{
@@ -158,10 +141,6 @@ body,html {
     filter: drop-shadow(10px 8px 5px rgba(186, 182, 182, 0.427));
 }
 
-.nav-item a.active {
-    background: linear-gradient(to right, #2b3950, transparent, transparent);
-}
-
 .nav-item a::before {
     content: "";
     position: absolute;
@@ -176,7 +155,7 @@ body,html {
 }
 
 .nav-item a.active::before {
-    width: 5px;
+    width: 10px;
 }
 
 .nav-item a:hover {
@@ -513,6 +492,7 @@ body,html {
 
 
 .predictionArea{
+    grid-column: span 2;
     border-radius: 20px;
     width: 100%;
     justify-self: center;
@@ -548,7 +528,6 @@ body,html {
     z-index: 1;
     font-family: inherit;
     cursor: pointer;
-    border-radius: 10px;
     font-size: 0.9em;
     display: flex;
     align-items: center;
@@ -577,11 +556,10 @@ body,html {
 .pred-area-btn::before {
     content: '';
     width: 0;
-    height: 500%;
+    height: 800%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(120deg);
     transition: .5s ease;
     display: block;
     z-index: -1;
@@ -589,10 +567,12 @@ body,html {
 
 #predictButton::before {
     background: var(--pred-btn-color);
+    transform: translate(-50%, -50%) rotate(120deg);
 }
 
 #clearButton::before {
     background: var(--clear-btn-color);
+    transform: translate(-50%, -50%) rotate(60deg);
 }
    
 .pred-area-btn:hover::before {
@@ -613,7 +593,20 @@ body,html {
 }
    
 
+#archive-welcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 
+#archive-welcome .archive-img svg{
+    width: 100px;
+    height: auto;
+    fill: var(--pulse-color);
+    filter: drop-shadow(15px 10px 5px rgba(104, 74, 74, 0.758));
+}
 
 
 
@@ -625,8 +618,8 @@ body,html {
     border-radius: 20px;
     overflow: hidden;
     background-color: #eae9e9;
-    box-shadow: 20px 20px 60px #bebebe,
-                -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #bebebe6c,
+                -20px -20px 60px #b4afaf6d;
 }
 
 .archive-table th,
@@ -656,6 +649,7 @@ body,html {
 
 .archive-content-container{
     position: relative;
+    min-height: 50vh;
 }
 
 
@@ -668,7 +662,7 @@ body,html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(23, 23, 23, 0.73);
+    background: var(--header-bg-color);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.3px);
@@ -701,10 +695,8 @@ body,html {
 
 .modal-content .modal-close {
     cursor: pointer;
-    background-color: #d9d5d52b;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #575555;
+    background-color: transparent;
+    border: none;
     transition: all 0.3s ease-in-out;
     display: flex;
     justify-content: center;
@@ -712,16 +704,52 @@ body,html {
 }
 
 .modal-close svg {
-    width: 30px;
-    height: 30px;
-    fill: var(--fts-color);
+    width: 50px;
+    height: 50px;
+    fill: var(--pulse-color);
     filter: drop-shadow(10px 8px 5px rgba(178, 127, 127, 0.427));
+    transition: all 0.3s ease-in-out;
 }
 
-.modal-content .modal-close:hover {
-    background-color: #575555;
-    color: #fff;
+.modal-content .modal-close:hover svg {
+    fill: #3e4b51;
 }
+
+
+
+
+
+
+
+
+
+.prediction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #b7cce86b;
+    color: var(--menu-text-color);
+}
+
+.prediction-table th,
+.prediction-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.prediction-table tbody tr{
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+
+
+
+
+
 
 .modal-content ul {
     list-style: none;
@@ -791,8 +819,19 @@ body,html {
         grid-template-columns: 1fr;
     }
 
+    .predictionArea{
+        grid-column: span 1;
+    }
+
     .pred-btns-area {
         flex-direction: column;
     }
 }
 
+/* Mobile */
+@media (max-width: 700px) {
+    #archive-welcome{
+        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+}

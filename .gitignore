@@ -1,5 +1,6 @@
-data/
-/models/
 /backend/.venv
 __pycache__
 friend.css
+/backend/notebooks/data_analysis.ipynb
+notes.html
+backend/tests.py

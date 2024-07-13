@@ -1,9 +1,9 @@
 import pickle
 import pandas as pd
 
-def predict_sample(fts, model_path="../models/model.pkl"):
+def predict_sample(fts, model_path="../models/best_model.pkl"):
 
-    correct_col_names = ['Age', 'Sex', 'ChestPainType', 'RestingBP', 'Cholesterol', 'FastingBS',
+    correct_col_names = ['Age', 'Sex', 'ChestPainType', 'Cholesterol', 'FastingBS',
        'RestingECG', 'MaxHR', 'ExerciseAngina', 'Oldpeak', 'ST_Slope']
 
     # Create the new dataframe from the dictionary with correct column names
