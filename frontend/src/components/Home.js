@@ -5,7 +5,7 @@ function Home() {
     return (
         <div className="app-content">
             <div class="welcome-msg">
-                <h1>Welcome to the Heart Failure Predictor</h1>
+                <h1>Heart Failure Predictor</h1>
             </div>
             <HeartFailurePredictor />
         </div>

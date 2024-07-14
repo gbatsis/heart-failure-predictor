@@ -6,6 +6,8 @@ Welcome to the Health Failure Prediction project! This project leverages machine
 
 This repository contains the code and resources for training and deploying a machine learning model to predict heart failure. The project includes both a frontend application built with React and a backend API built with Python (Flask).
 
+Web app is responsive and tested using various devices.
+
 ## Features
 
 - **Machine Learning Model**: SVM with RBF kernel, optimized using grid search cross-validation.
@@ -80,31 +82,36 @@ health-failure-prediction/
 └── ... (other project files)
 
 ### Step 3: Docker Compose Configuration
-Create or verify the docker-compose.yml file in the root of your project:
+Verify the docker-compose.yml file in the root of the project:
 
 ```yaml
-version: '3.8'
 services:
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     ports:
       - "3000:3000"
     environment:
       - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    volumes:
-      - ./backend:/app
     ports:
       - "5050:5050"
+    volumes:
+      - ./backend:/app
+
+volumes:
+  backend_db:
 ```
+
+Adjust the ports based on your needs. 
 
 ### Step 4: Build and Run the Docker Containers
 Run the following command to build and start the Docker containers:
@@ -112,6 +119,22 @@ Run the following command to build and start the Docker containers:
 ```ssh
 docker-compose up --build
 ```
+
+#### Issues
+
+1.  Message: "docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', PermissionError(13, 'Permission denied'))"
+  Solution:
+  ```ssh
+  sudo docker-compose up --build
+  ```
+
+2. Sometimes, Docker can use a cached layer that didn't install the packages properly. You can force Docker to rebuild the images without using cache:
+  ```ssh 
+    docker-compose build --no-cache
+    docker-compose up
+  ```
+
+
 
 ### Step 5: Access the Application
 Once the containers are running, you can access the application:
