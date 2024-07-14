@@ -134,7 +134,34 @@ docker-compose up --build
     docker-compose up
   ```
 
+### Run the project without using Docker:
 
+#### Step 1: Prepare backend
+
+Create virtual enviroment and install project requirements:
+
+```ssh
+  cd backend
+  python3.8 -m venv .venv
+  pip install requirements.txt
+```
+
+Run application:
+
+```ssh
+  python app.py 
+```
+
+#### Step 2: Prepare frontend
+
+Ensure that Node.js is installed on your computer
+
+Start node:
+
+```ssh
+  cd frontend
+  npm start
+```
 
 ### Step 5: Access the Application
 Once the containers are running, you can access the application:
