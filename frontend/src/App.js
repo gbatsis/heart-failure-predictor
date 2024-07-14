@@ -4,7 +4,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
 import Home from './components/Home';
 import Archive from './components/Archive';
-import CanvasBackground from './components/Background';
 import './assets/css/styles.css';
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
 
     return (
         <div className="app">
-            <CanvasBackground />
             <div className="app-wrapper">
                 <Header />
                 <div className="app-container">
