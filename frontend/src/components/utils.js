@@ -12,7 +12,7 @@ export const transformFeatureNames = (feature) => {
         oldpeak: "Oldpeak",
         stSlope: "ST Slope",
         result: "Prediction Result",
-        timestamp: "Timestamp"
+        timestamp: "Time"
     };
 
     return featureMap[feature] || feature;

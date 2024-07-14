@@ -1,5 +1,18 @@
 # Health failure prediction using Machine Learning
 
+Welcome to the Health Failure Prediction project! This project leverages machine learning to predict heart failure based on various health metrics.
+
+## Overview
+
+This repository contains the code and resources for training and deploying a machine learning model to predict heart failure. The project includes both a frontend application built with React and a backend API built with Python (Flask).
+
+## Features
+
+- **Machine Learning Model**: SVM with RBF kernel, optimized using grid search cross-validation.
+- **Frontend**: React application for user interaction and visualization.
+- **Backend**: Flask API for serving the machine learning predictions.
+- **Dockerized Deployment**: Easily deploy the application using Docker.
+
 ## Machine Learning framework
 
 ### Model selection
@@ -25,3 +38,84 @@ After conducting the EDA and an exhaustive grid search cross-validation among th
 ![Precision-Recall Curve](./data/results/curve1.png)
 
 ![ROC-AUC Curve](./data/results/curve2.png)
+
+## Installation Instructions
+
+### Prerequisites
+
+Ensure you have Docker and Docker Compose installed on your machine.
+
+### Step 1: Clone the Repository
+
+Clone the repository to your local machine:
+```sh
+git clone https://github.com/gbatsis/heart-failure-predictor.git
+cd health-failure-prediction
+```
+
+### Step 2: Ensure the directory structure looks like this:
+
+health-failure-prediction/
+
+├── backend/
+
+│   ├── Dockerfile
+
+│   ├── requirements.txt
+
+│   └── ... (other backend files)
+
+├── frontend/
+
+│   ├── Dockerfile
+
+│   ├── package.json
+
+│   ├── package-lock.json
+
+│   └── ... (other frontend files)
+
+├── docker-compose.yml
+
+└── ... (other project files)
+
+### Step 3: Docker Compose Configuration
+Create or verify the docker-compose.yml file in the root of your project:
+
+```yaml
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5050:5050"
+```
+
+### Step 4: Build and Run the Docker Containers
+Run the following command to build and start the Docker containers:
+
+```ssh
+docker-compose up --build
+```
+
+### Step 5: Access the Application
+Once the containers are running, you can access the application:
+
+Frontend: Open your browser and navigate to http://localhost:3000
+
+Backend: The backend server will be running at http://localhost:5050
