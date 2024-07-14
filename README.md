@@ -1,6 +1,6 @@
-# Health failure prediction using Machine Learning
+# Heart failure prediction using Machine Learning
 
-Welcome to the Health Failure Prediction project! This project leverages machine learning to predict heart failure based on various health metrics.
+Welcome to the Heart Failure Prediction project! This project leverages machine learning to predict heart failure based on various health metrics.
 
 ## Overview
 
@@ -52,12 +52,12 @@ Ensure you have Docker and Docker Compose installed on your machine.
 Clone the repository to your local machine:
 ```sh
 git clone https://github.com/gbatsis/heart-failure-predictor.git
-cd health-failure-prediction
+cd heart-failure-predictor
 ```
 
 ### Step 2: Ensure the directory structure looks like this:
 
-health-failure-prediction/
+heart-failure-predictor/
 
 ├── backend/
 
