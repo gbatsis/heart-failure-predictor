@@ -3,7 +3,7 @@ import { predictRisk } from './api';
 
 function HeartFailurePredictor() {
     const [formData, setFormData] = useState({
-        age: 50,
+        age: '',
         sex: 'M',
         chestPainType: 'ATA',
         cholesterol: 200,
@@ -43,7 +43,7 @@ function HeartFailurePredictor() {
 
     const handleClear = () => {
         setFormData({
-            age: 50,
+            age: '',
             sex: 'M',
             chestPainType: 'ATA',
             cholesterol: 200,
@@ -69,10 +69,21 @@ function HeartFailurePredictor() {
                     <div className="form-section" id="ageSection">
                         <p id="ageDesc">Please select the age of the patient:</p>
                         <div className="input-group" id="ageInputGroup">
-                            <input type="range" id="age" name="age" min="0" max="100" value={formData.age} onChange={handleChange} />
-                            <label htmlFor="age">Age: {formData.age}</label>
+                            <input 
+                                type="text" 
+                                id="age" 
+                                name="age" 
+                                value={formData.age} 
+                                onChange={handleChange} 
+                                inputMode="numeric" 
+                                pattern="\d*" 
+                                style={{ caretColor: 'black' }}
+                                placeholder="Age"
+                                required
+                            />
                         </div>
                     </div>
+                    
 
                     <div className="form-section" id="sexSection">
                         <p id="sexDesc">Please select the sex of the patient:</p>

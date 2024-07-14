@@ -3,8 +3,8 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package.json /app
-COPY package-lock.json /app
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json /app/
 
 RUN npm install
 

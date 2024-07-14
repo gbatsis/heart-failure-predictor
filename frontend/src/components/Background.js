@@ -4,6 +4,7 @@ const CanvasBackground = () => {
     const canvasRef = useRef(null);
     let animationFrameId;
 
+    // Function to create the background with gradient and shapes
     const createBackground = (ctx, width, height) => {
         // Draw gradient background
         const gradient = ctx.createLinearGradient(0, 0, width, height);
@@ -27,6 +28,7 @@ const CanvasBackground = () => {
         });
     };
 
+    // Function to add moving noise to the canvas
     const addMovingNoise = (ctx, width, height, time) => {
         const imageData = ctx.getImageData(0, 0, width, height);
         const data = imageData.data;
@@ -39,6 +41,7 @@ const CanvasBackground = () => {
         ctx.putImageData(imageData, 0, 0);
     };
 
+    // Function to animate the noise effect
     const animateNoise = (ctx, width, height) => {
         let time = 0;
 
@@ -52,6 +55,7 @@ const CanvasBackground = () => {
         render();
     };
 
+    // useEffect hook to set up the canvas and animation
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');

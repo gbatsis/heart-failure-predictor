@@ -20,6 +20,8 @@
     --table-row-hover-bg-color: rgba(101, 83, 83, 0.769);
 }
 
+/* General styles */
+
 *,
 *::before,
 *::after {
@@ -57,6 +59,10 @@ body,html {
     display: grid;
     grid-template-columns: 13% 87%;
 }
+
+/* ---------------------------------- */
+
+/* Header and Navigation styles */
 
 .header{
     padding-top: 10px;
@@ -184,7 +190,9 @@ body,html {
     transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 
+/* ---------------------------------- */
 
+/* Content styles */
 .app-content{
     width: 100%;
     height: calc(100vh - calc(100vh / 35));
@@ -240,6 +248,10 @@ body,html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* ---------------------------------- */
+
+/* Prediction form styles */
+
 #prediction-content-wrapper .intro-msg{
     margin-bottom: 30px;
 }
@@ -250,32 +262,42 @@ body,html {
 }
 
 #predictionForm {
-    display: grid;
+    /*display: grid;
     grid-template-columns: repeat(2, 1fr); 
     padding: 20px; 
-    margin: auto; 
+    margin: auto; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
 }
-
 
 .form-section{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 10px;
-    border-bottom: 1px solid var(--border-color);
     margin-bottom: 20px;
-    padding: 20px;
+    width: 100%;
+    flex: 1 1 calc(50% - 90px);
+    margin: 10px;
 }
 
 .form-section p{
     color: var(--black-text-1);
-    text-align: center;
-    padding: 10px;
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-group label {
@@ -285,8 +307,8 @@ body,html {
 }
 
 .input-group input[type="range"] {
-    width: 100%;
-    min-width: 300px;
+    width: 90%;
+    min-width: 90%;
     margin: 10px 0;
     -webkit-appearance: none;
     appearance: none;
@@ -332,38 +354,31 @@ body,html {
     background: #2b3950;
 }
 
+#ageInputGroup input{
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #717790b8;;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #292c35b8;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
 
+#ageInputGroup input:focus {
+    border-color: var(--fts-color);
+    outline: none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#ageInputGroup input::placeholder {
+    color: #292c35b8;
+}
 
 /* Inspired by https://uiverse.io/Pradeepsaranbishnoi/black-husky-57 */
 .form-group{
     color: var(--black-text-1);
-    width: 150px;
+    width: 100%;
     height: 140px;
     border-radius: 10px;
     position: relative;
@@ -375,32 +390,26 @@ body,html {
   
 #sexGroup{
     height: 150px;
-    width: 150px;
 }
 
 #chestPainGroup{
     height: 200px;
-    width: 250px;
 }
 
 #fastingBSGroup{
     height: 150px;
-    width: 150px;
 }
 
 #ecgGroup{
     height: 200px;
-    width: 350px;
 }
 
 #anginaGroup{
     height: 150px;
-    width: 150px;
 }
 
 #slopeGroup{
     height: 200px;
-    width: 250px;
 }
 
 .form-group label {
@@ -488,11 +497,8 @@ body,html {
       transform: scale(1, 1);
     }
 }
-  
-
 
 .predictionArea{
-    grid-column: span 2;
     border-radius: 20px;
     width: 100%;
     justify-self: center;
@@ -504,18 +510,12 @@ body,html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .pred-btns-area{
     display: flex;
     flex-direction: row;
     gap: 20px;
     margin-top: 20px;
 }
-
-
-
-
 
 .pred-area-btn {
     padding: 15px 30px;
@@ -591,8 +591,10 @@ body,html {
     fill: var(--menu-text-color);
     filter: drop-shadow(10px 8px 5px rgba(150, 143, 143, 0.243));
 }
-   
 
+/* ---------------------------------- */
+   
+/* Archive styles */
 #archive-welcome{
     display: flex;
     flex-direction: row;
@@ -607,9 +609,6 @@ body,html {
     fill: var(--pulse-color);
     filter: drop-shadow(15px 10px 5px rgba(104, 74, 74, 0.758));
 }
-
-
-
 
 .archive-table {
     width: 80%;
@@ -651,10 +650,6 @@ body,html {
     position: relative;
     min-height: 50vh;
 }
-
-
-
-
 
 .modal-overlay {
     position: absolute;
@@ -715,14 +710,6 @@ body,html {
     fill: #3e4b51;
 }
 
-
-
-
-
-
-
-
-
 .prediction-table {
     width: 100%;
     border-collapse: collapse;
@@ -745,22 +732,6 @@ body,html {
     border: 1px solid var(--border-color);
 }
 
-
-
-
-
-
-
-.modal-content ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0;
-    color: var(--menu-text-color);
-}
-
 .modal-overlay.show {
     opacity: 1;
     visibility: visible;
@@ -770,16 +741,10 @@ body,html {
     transform: translateY(0);
 }
 
+/* ---------------------------------- */
 
 
-
-
-
-
-
-
-
-
+/* Responsive styles */
 
 /* Following https://codepen.io/ecemgo/pen/YzBZjjb responsive sidebar design */
 
@@ -833,5 +798,18 @@ body,html {
     #archive-welcome{
         flex-direction: column;
         flex-direction: column-reverse;
+    }
+
+    .form-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        flex: 1 1 calc(50% - 20px);
+        margin: 10px;
     }
 }
